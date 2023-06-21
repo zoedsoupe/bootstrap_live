@@ -58,6 +58,9 @@ defmodule BootstrapLive.Server do
       render_errors: [view: BootstrapLive.Layouts.ErrorHTML],
       check_origin: false,
       pubsub_server: __MODULE__.PubSub,
+      watchers: [
+        esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+      ],
       live_reload: [
         patterns: [
           ~r"lib/bootstrap_live/.*(ex|heex|js)$"

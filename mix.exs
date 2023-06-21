@@ -26,8 +26,9 @@ defmodule BootstrapLive.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_view, "~> 0.19"},
-      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
-      {:ex_doc, "~> 0.27", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.27", only: :dev, runtime: false},
+      {:esbuild, "~> 0.4", runtime: Mix.env() == :dev},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
     ]
   end
 

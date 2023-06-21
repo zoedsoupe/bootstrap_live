@@ -1,0 +1,15 @@
+{
+  "name": "bootstrap_live",
+  "version": "0.1.0",
+  "description": "Bootstrap components for Phoenix LiveView",
+  "repository": "https://github.com/zoedsoupe/bootstrap_live",
+  "author": "zoedsoupe",
+  "license": "WTFPL",
+  "private": false,
+  "dependencies": {
+    "bootstrap": "^5.3.0",
+    "phoenix": "file:../deps/phoenix",
+    "phoenix_html": "file:../deps/phoenix_html",
+    "phoenix_live_view": "file:../deps/phoenix_live_view"
+  }
+}
