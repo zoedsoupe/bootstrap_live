@@ -5,9 +5,14 @@ defmodule BootstrapLive.Server do
     @moduledoc false
 
     use Phoenix.Router
+    import Phoenix.LiveView.Router
 
     pipeline :browser do
       plug(:fetch_session)
+    end
+
+    scope "/", BootstrapLive do
+      live("/components", ComponentsLive)
     end
   end
 
@@ -20,7 +25,6 @@ defmodule BootstrapLive.Server do
 
     if code_reloading? do
       socket("/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket)
-
       plug(Phoenix.LiveReloader)
       plug(Phoenix.CodeReloader)
     end
@@ -35,7 +39,7 @@ defmodule BootstrapLive.Server do
     plug(Plug.Session,
       store: :cookie,
       key: "_live_view_key",
-      signing_salt: "/VEDsdfsffMnp5"
+      signing_salt: "m3w4qIJQqs5/"
     )
 
     plug(Plug.RequestId)
@@ -56,6 +60,7 @@ defmodule BootstrapLive.Server do
       live_view: [signing_salt: "QvGq43QXgP6UiOuypGdZfFHawTS6T8aV"],
       http: [port: System.get_env("PORT") || 4001],
       render_errors: [view: BootstrapLive.Layouts.ErrorHTML],
+      reloadable_compilers: [:elixir],
       check_origin: false,
       pubsub_server: __MODULE__.PubSub,
       watchers: [
@@ -63,7 +68,8 @@ defmodule BootstrapLive.Server do
       ],
       live_reload: [
         patterns: [
-          ~r"lib/bootstrap_live/.*(ex|heex|js)$"
+          ~r"lib/bootstrap_live/live/.*(ex|heex)$",
+          ~r"priv/static/.*(js|css)$"
         ]
       ]
     ]
