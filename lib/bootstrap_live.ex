@@ -1,0 +1,2 @@
+defmodule BootstrapLive do
+end
