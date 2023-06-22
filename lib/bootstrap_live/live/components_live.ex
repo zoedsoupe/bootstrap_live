@@ -1,5 +1,5 @@
 defmodule BootstrapLive.ComponentsLive do
-  use Phoenix.LiveView, layout: {BootstrapLive.Layouts, :root}
+  use Phoenix.LiveView
   use Phoenix.Component
 
   import BootstrapLive

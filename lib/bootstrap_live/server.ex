@@ -8,10 +8,12 @@ defmodule BootstrapLive.Server do
     import Phoenix.LiveView.Router
 
     pipeline :browser do
+      plug(:put_root_layout, {BootstrapLive.Layouts, :root})
       plug(:fetch_session)
     end
 
     scope "/", BootstrapLive do
+      pipe_through(:browser)
       live("/components", ComponentsLive)
     end
   end

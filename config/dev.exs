@@ -7,3 +7,5 @@ config :esbuild,
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
+
+config :bootstrap_live, BootstrapLive.Server.Endpoint, code_reloader: true
